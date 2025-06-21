@@ -75,7 +75,7 @@ function broadcastScores() {
   const result = Object.values(players).map(p => ({ nickname: p.nickname, score: p.score }));
   io.emit("playerUpdate", result);
 }
-
+app.use("/data", express.static("data"));
 server.listen(10000, () => {
   console.log("🚀 카드맞추기 서버 실행 중: http://localhost:10000");
 });
