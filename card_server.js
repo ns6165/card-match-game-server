@@ -20,6 +20,7 @@ const io = new Server(server, {
 // ✅ 입장 코드 및 참가자 목록
 let roomCode = generateCode();
 let players = {}; // { socket.id: { nickname, score } }
+let gameStarted = false;
 
 function generateCode() {
   return Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -64,9 +65,9 @@ socket.on("getPlayerList", () => {
   broadcastPlayerList();
 });
 
-
   socket.on("start", () => {
     console.log("🚀 게임 시작!");
+     gameStarted = true;
     io.emit("startGame");
   });
 
@@ -81,6 +82,13 @@ socket.on("getPlayerList", () => {
     io.emit("finalResult", result);
   });
   
+  socket.on("requestStartStatus", () => {
+  if (gameStarted) {
+    console.log("🔁 재접속자에게 startGame 다시 전송");
+    socket.emit("startGame");
+  }
+});
+
 socket.on("disconnect", () => {
   if (players[socket.id]) {
     const nickname = players[socket.id].nickname;
