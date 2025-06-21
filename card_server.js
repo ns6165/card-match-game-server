@@ -68,11 +68,15 @@ socket.on("getPlayerList", () => {
     const result = Object.values(players).map(p => ({ nickname: p.nickname, score: p.score }));
     io.emit("finalResult", result);
   });
-
-  socket.on("disconnect", () => {
+  
+socket.on("disconnect", () => {
+  if (players[socket.id]) {
+    console.log(`❌ 참가자 연결 종료: ${players[socket.id].nickname}`);
     delete players[socket.id];
     broadcastPlayerList();
-  });
+  } else {
+    console.log(`🔌 일반 연결 종료: ${socket.id}`);
+  }
 });
 
 function broadcastPlayerList() {
