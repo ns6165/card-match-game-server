@@ -88,7 +88,7 @@ socket.on("disconnect", () => {
     console.log(`🔌 일반 연결 종료: ${socket.id}`);
   }
 });
-
+}); 
 
 // ✅ 점수 브로드캐스트
 function broadcastScores() {
