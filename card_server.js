@@ -53,6 +53,11 @@ io.on("connection", (socket) => {
 
 socket.on("join", ({ nickname, code }) => {
   if (code !== roomCode) return;
+   // 👉 닉네임 중복 제거 (같은 닉네임이 이미 있으면 이전 socket 제거)
+  const existingSocketId = Object.keys(players).find(id => players[id].nickname === nickname);
+  if (existingSocketId) {
+    delete players[existingSocketId];
+  }
   console.log(`👤 참가자 입장: ${nickname}`);
   players[socket.id] = { nickname, score: 0 };
 
