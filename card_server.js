@@ -84,20 +84,20 @@ socket.on("getPlayerList", () => {
 socket.on("disconnect", () => {
   if (players[socket.id]) {
     const nickname = players[socket.id].nickname;
-    console.log(❌ 연결 종료 감지: ${nickname}, 10초 대기 중...);
+    console.log(`❌ 연결 종료 감지: ${nickname}, 10초 대기 중...`);
 
     // 👉 10초 동안 기다렸다가 여전히 접속이 없으면 제거
     setTimeout(() => {
       if (!io.sockets.sockets.get(socket.id)) {
         delete players[socket.id];
-        console.log(🧹 ${nickname} 제거됨);
+        console.log(`🧹 ${nickname} 제거됨`);
         broadcastPlayerList();
       } else {
-        console.log(🔄 ${nickname} 재접속 감지 → 제거 안 함);
+        console.log(`🔄 ${nickname} 재접속 감지 → 제거 안 함`);
       }
     }, 10000);
   } else {
-    console.log(🔌 일반 연결 종료: ${socket.id});
+    console.log(`🔌 일반 연결 종료: ${socket.id}`);
   }
 });
 }); 
