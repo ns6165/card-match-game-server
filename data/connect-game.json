@@ -1,0 +1,262 @@
+[
+  {
+    "pairId": 1,
+    "items": [
+      {
+        "id": "1a",
+        "text": "a"
+      },
+      {
+        "id": "1b",
+        "text": "a"
+      }
+    ]
+  },
+  {
+    "pairId": 16,
+    "items": [
+      {
+        "id": "16a",
+        "text": "p"
+      },
+      {
+        "id": "16b",
+        "text": "p"
+      }
+    ]
+  },
+  {
+    "pairId": 2,
+    "items": [
+      {
+        "id": "2a",
+        "text": "b"
+      },
+      {
+        "id": "2b",
+        "text": "b"
+      }
+    ]
+  },
+  {
+    "pairId": 5,
+    "items": [
+      {
+        "id": "5a",
+        "text": "e"
+      },
+      {
+        "id": "5b",
+        "text": "e"
+      }
+    ]
+  },
+  {
+    "pairId": 14,
+    "items": [
+      {
+        "id": "14a",
+        "text": "n"
+      },
+      {
+        "id": "14b",
+        "text": "n"
+      }
+    ]
+  },
+  {
+    "pairId": 9,
+    "items": [
+      {
+        "id": "9a",
+        "text": "i"
+      },
+      {
+        "id": "9b",
+        "text": "i"
+      }
+    ]
+  },
+  {
+    "pairId": 4,
+    "items": [
+      {
+        "id": "4a",
+        "text": "d"
+      },
+      {
+        "id": "4b",
+        "text": "d"
+      }
+    ]
+  },
+  {
+    "pairId": 11,
+    "items": [
+      {
+        "id": "11a",
+        "text": "k"
+      },
+      {
+        "id": "11b",
+        "text": "k"
+      }
+    ]
+  },
+  {
+    "pairId": 8,
+    "items": [
+      {
+        "id": "8a",
+        "text": "h"
+      },
+      {
+        "id": "8b",
+        "text": "h"
+      }
+    ]
+  },
+  {
+    "pairId": 19,
+    "items": [
+      {
+        "id": "19a",
+        "text": "s"
+      },
+      {
+        "id": "19b",
+        "text": "s"
+      }
+    ]
+  },
+  {
+    "pairId": 15,
+    "items": [
+      {
+        "id": "15a",
+        "text": "o"
+      },
+      {
+        "id": "15b",
+        "text": "o"
+      }
+    ]
+  },
+  {
+    "pairId": 7,
+    "items": [
+      {
+        "id": "7a",
+        "text": "g"
+      },
+      {
+        "id": "7b",
+        "text": "g"
+      }
+    ]
+  },
+  {
+    "pairId": 13,
+    "items": [
+      {
+        "id": "13a",
+        "text": "m"
+      },
+      {
+        "id": "13b",
+        "text": "m"
+      }
+    ]
+  },
+  {
+    "pairId": 18,
+    "items": [
+      {
+        "id": "18a",
+        "text": "r"
+      },
+      {
+        "id": "18b",
+        "text": "r"
+      }
+    ]
+  },
+  {
+    "pairId": 6,
+    "items": [
+      {
+        "id": "6a",
+        "text": "f"
+      },
+      {
+        "id": "6b",
+        "text": "f"
+      }
+    ]
+  },
+  {
+    "pairId": 20,
+    "items": [
+      {
+        "id": "20a",
+        "text": "t"
+      },
+      {
+        "id": "20b",
+        "text": "t"
+      }
+    ]
+  },
+  {
+    "pairId": 10,
+    "items": [
+      {
+        "id": "10a",
+        "text": "j"
+      },
+      {
+        "id": "10b",
+        "text": "j"
+      }
+    ]
+  },
+  {
+    "pairId": 17,
+    "items": [
+      {
+        "id": "17a",
+        "text": "q"
+      },
+      {
+        "id": "17b",
+        "text": "q"
+      }
+    ]
+  },
+  {
+    "pairId": 12,
+    "items": [
+      {
+        "id": "12a",
+        "text": "l"
+      },
+      {
+        "id": "12b",
+        "text": "l"
+      }
+    ]
+  },
+  {
+    "pairId": 3,
+    "items": [
+      {
+        "id": "3a",
+        "text": "c"
+      },
+      {
+        "id": "3b",
+        "text": "c"
+      }
+    ]
+  }
+]
