@@ -9,8 +9,14 @@ app.use(cors());
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "*", methods: ["GET", "POST"] }
+  cors: {
+    origin: "*",  // 또는 ["http://127.0.0.1:5500"]
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: false
+  }
 });
+
 
 // ✅ 입장 코드 및 참가자 목록
 let roomCode = generateCode();
