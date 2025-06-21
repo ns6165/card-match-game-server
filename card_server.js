@@ -87,13 +87,15 @@ socket.on("getPlayerList", () => {
     io.emit("finalResult", result);
   });
   
-  socket.on("requestStartStatus", () => {
-  if (gameStarted) {
-    console.log("🔁 재접속자에게 startGame 다시 전송");
+ let alreadySentStartTo = new Set();
+
+socket.on("requestStartStatus", () => {
+  if (gameStarted && !alreadySentStartTo.has(socket.id)) {
+    console.log("🔁 재접속자에게 startGame 전송:", socket.id);
     socket.emit("startGame");
+    alreadySentStartTo.add(socket.id);
   }
 });
-
 socket.on("disconnect", () => {
   if (players[socket.id]) {
     const nickname = players[socket.id].nickname;
