@@ -32,16 +32,28 @@ io.on("connection", (socket) => {
     socket.emit("codeVerified", code === roomCode);
   });
 
-  socket.on("join", ({ nickname, code }) => {
-    if (code !== roomCode) return;
-    console.log(`👤 참가자 입장: ${nickname}`);
-    players[socket.id] = { nickname, score: 0 };
-    broadcastPlayerList();
-  });
+ socket.on("join", ({ nickname, code }) => {
+  if (code !== roomCode) return;
+  console.log(`👤 참가자 입장: ${nickname}`);
+  players[socket.id] = { nickname, score: 0 };
 
-  socket.on("getPlayerList", () => {
-    broadcastPlayerList();
+  // ✅ 모든 클라이언트에게 목록 브로드캐스트
+  broadcastPlayerList();
+
+  // ✅ 관리자에게만 한 번 더 강제 전송
+  io.sockets.sockets.forEach((s) => {
+    if (s !== socket) {
+      s.emit("playerList", Object.values(players).map(p => p.nickname));
+    }
   });
+});
+
+
+socket.on("getPlayerList", () => {
+  console.log("🟠 관리자 getPlayerList 요청 수신");
+  broadcastPlayerList();
+});
+
 
   socket.on("start", () => {
     console.log("🚀 게임 시작!");
@@ -65,9 +77,9 @@ io.on("connection", (socket) => {
   });
 });
 
-// ✅ 참가자 목록 전체 브로드캐스트
 function broadcastPlayerList() {
   const nicknames = Object.values(players).map(p => p.nickname);
+  console.log("📢 전체 참가자 목록 브로드캐스트:", nicknames);
   io.emit("playerList", nicknames);
 }
 
