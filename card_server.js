@@ -34,6 +34,7 @@ io.on("connection", (socket) => {
 
   socket.on("join", ({ nickname, code }) => {
     if (code !== roomCode) return;
+    console.log(`👤 참가자 입장: ${nickname}`);
     players[socket.id] = { nickname, score: 0 };
     broadcastPlayerList();
   });
