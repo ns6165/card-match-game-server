@@ -71,21 +71,24 @@ socket.on("getPlayerList", () => {
   
 socket.on("disconnect", () => {
   if (players[socket.id]) {
-    console.log(`❌ 참가자 연결 종료: ${players[socket.id].nickname}`);
-    delete players[socket.id];
-    broadcastPlayerList();
+    const nickname = players[socket.id].nickname;
+    console.log(`❌ 연결 종료 감지: ${nickname}, 10초 대기 중...`);
+
+    // 👉 10초 동안 기다렸다가 여전히 접속이 없으면 제거
+    setTimeout(() => {
+      if (!io.sockets.sockets.get(socket.id)) {
+        delete players[socket.id];
+        console.log(`🧹 ${nickname} 제거됨`);
+        broadcastPlayerList();
+      } else {
+        console.log(`🔄 ${nickname} 재접속 감지 → 제거 안 함`);
+      }
+    }, 10000);
   } else {
     console.log(`🔌 일반 연결 종료: ${socket.id}`);
   }
-});  // ✅ 이거는 socket.on("disconnect", ...) 닫는 중괄호
+});
 
-});  // ✅ 이거 추가! → io.on("connection", ...) 닫는 중괄호 ← 누락되어 있었음
-
-function broadcastPlayerList() {
-  const nicknames = Object.values(players).map(p => p.nickname);
-  console.log("📢 전체 참가자 목록 브로드캐스트:", nicknames);
-  io.emit("playerList", nicknames);
-}
 
 // ✅ 점수 브로드캐스트
 function broadcastScores() {
