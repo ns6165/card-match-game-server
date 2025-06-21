@@ -77,7 +77,9 @@ socket.on("disconnect", () => {
   } else {
     console.log(`🔌 일반 연결 종료: ${socket.id}`);
   }
-});
+});  // ✅ 이거는 socket.on("disconnect", ...) 닫는 중괄호
+
+});  // ✅ 이거 추가! → io.on("connection", ...) 닫는 중괄호 ← 누락되어 있었음
 
 function broadcastPlayerList() {
   const nicknames = Object.values(players).map(p => p.nickname);
