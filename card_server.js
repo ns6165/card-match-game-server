@@ -52,7 +52,7 @@ io.on("connection", (socket) => {
 
 socket.on("join", ({ nickname, code }) => {
   if (code !== roomCode) return;
-  console.log(👤 참가자 입장: ${nickname});
+  console.log(`👤 참가자 입장: ${nickname}`);
   players[socket.id] = { nickname, score: 0 };
 
   // ✅ 관리자 포함 전체에 참가자 목록 브로드캐스트
