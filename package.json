@@ -1,0 +1,13 @@
+{
+  "name": "card-match-game",
+  "version": "1.0.0",
+  "main": "card_server.js",
+  "scripts": {
+    "start": "node card_server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
+}
