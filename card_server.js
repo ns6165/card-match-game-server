@@ -95,6 +95,15 @@ socket.on("getPlayerList", () => {
   io.emit("code", roomCode);       // 새 코드 전송
   console.log("🔄 수동 초기화 완료, 새 코드:", roomCode);
 });
+  socket.on("resetServer", () => {
+  console.log("🧹 서버 수동 초기화 요청 수신");
+  roomCode = generateCode();
+  players = {};
+  gameStarted = false;
+  io.emit("code", roomCode);
+  broadcastPlayerList();
+});
+
   socket.on("endGame", () => {
     const result = Object.values(players).map(p => ({ nickname: p.nickname, score: p.score }));
     io.emit("finalResult", result);
