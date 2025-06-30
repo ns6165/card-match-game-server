@@ -39,6 +39,8 @@ function broadcastScores() {
   }));
   io.emit("playerUpdate", result);
 }
+  let alreadySentStartTo = new Set();
+
 // ✅ Socket.IO 연결
 io.on("connection", (socket) => {
   console.log("🟢 연결됨:", socket.id);
@@ -82,13 +84,22 @@ socket.on("getPlayerList", () => {
     broadcastScores();
   });
 
+  socket.on("resetGame", () => {
+  players = {};
+  gameStarted = false;
+  roomCode = generateCode();
+
+  alreadySentStartTo = new Set();  // ✅ 재시작 시 초기화
+  broadcastPlayerList();           // 닉네임 목록 초기화
+  io.emit("gameReset");            // 클라이언트에 초기화 알림
+  io.emit("code", roomCode);       // 새 코드 전송
+  console.log("🔄 수동 초기화 완료, 새 코드:", roomCode);
+});
   socket.on("endGame", () => {
     const result = Object.values(players).map(p => ({ nickname: p.nickname, score: p.score }));
     io.emit("finalResult", result);
   });
-  
- let alreadySentStartTo = new Set();
-
+ 
 socket.on("requestStartStatus", () => {
   if (gameStarted && !alreadySentStartTo.has(socket.id)) {
     console.log("🔁 재접속자에게 startGame 전송:", socket.id);
